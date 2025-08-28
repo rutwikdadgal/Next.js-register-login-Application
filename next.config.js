@@ -1,9 +1,7 @@
+// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "standalone",   // ✅ makes Next.js Azure-friendly
-  experimental: {
-    appDir: true,
-  },
+  output: "standalone",   // ✅ makes deployment much cleaner
 };
 
 module.exports = nextConfig;
