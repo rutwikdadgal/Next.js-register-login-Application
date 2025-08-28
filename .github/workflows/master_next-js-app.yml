@@ -23,6 +23,13 @@ jobs:
         with:
           node-version: '22.x'
 
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
@@ -56,4 +63,5 @@ jobs:
           app-name: 'Next-JS-APP'
           slot-name: 'Production'
           package: .
+
           
