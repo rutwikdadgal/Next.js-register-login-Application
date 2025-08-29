@@ -1,9 +1,11 @@
-"use client";   // 👈 required in App Router client components
+"use client"; // 👈 required in App Router client components
 
 import { useState } from "react";
+import { useRouter } from "next/navigation"; // App Router navigation
 
 export default function Register() {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +30,10 @@ export default function Register() {
       console.error(err);
       alert("Something went wrong. Check console.");
     }
+  };
+
+  const handleLoginRedirect = () => {
+    router.push("/login"); // Redirect to login page
   };
 
   return (
@@ -55,6 +61,15 @@ export default function Register() {
       />
       <button type="submit" className="bg-blue-500 text-white p-2 rounded">
         Register
+      </button>
+
+      {/* 👇 Login Button */}
+      <button
+        type="button"
+        onClick={handleLoginRedirect}
+        className="bg-gray-600 text-white p-2 rounded"
+      >
+        Go to Login
       </button>
     </form>
   );
